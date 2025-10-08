@@ -1,0 +1,4 @@
+# Ignore local secrets
+.streamlit/secrets.toml
+C:\Users\SriVarshaTummuru\Desktop\Chatbot\secrets.env
+secrets.env
