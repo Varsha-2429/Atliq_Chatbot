@@ -1,0 +1,250 @@
+name: ATLIQ_YAML_1
+tables:
+  - name: DIM_DATE
+    base_table:
+      database: SNOWFLAKE_LEARNING_DB
+      schema: PUBLIC
+      table: DIM_DATE
+    dimensions:
+      - name: DAY_TYPE
+        description: Indicates whether the date falls on a weekend (Saturday or Sunday) or a weekday (Monday to Friday).
+        expr: DAY_TYPE
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - weekend
+          - weekeday
+      - name: MMM_YY
+        description: Month and Year in the format of three-letter month abbreviation and two-digit year (e.g. May-22 for May 2022).
+        expr: MMM_YY
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - May-22
+          - Jun-22
+          - Jul-22
+      - name: WEEK_NO
+        description: The week number of the year, where the year is implied by the context of the date dimension.
+        expr: WEEK_NO
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - W 20
+          - W 21
+          - W 19
+    time_dimensions:
+      - name: DATES
+        description: Date dimension representing specific dates in the format 'YYYY-MM-DD', used to track and analyze data over time.
+        expr: DATES
+        data_type: DATE
+        sample_values:
+          - '2022-05-01'
+          - '2022-05-27'
+          - '2022-05-02'
+  - name: DIM_HOTELS
+    base_table:
+      database: SNOWFLAKE_LEARNING_DB
+      schema: PUBLIC
+      table: DIM_HOTELS
+    dimensions:
+      - name: CATEGORY
+        description: The category of hotel, indicating the level of luxury and service provided, with options including Business (standard amenities and services for corporate travelers) and Luxury (high-end amenities and premium services for special occasions or discerning guests).
+        expr: CATEGORY
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Business
+          - Luxury
+      - name: CITY
+        description: The city where the hotel is located.
+        expr: CITY
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Mumbai
+          - Delhi
+          - Hyderabad
+      - name: PROPERTY_ID
+        description: Unique identifier for a hotel property.
+        expr: PROPERTY_ID
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - '16559'
+          - '16558'
+          - '16560'
+      - name: PROPERTY_NAME
+        description: The name of the hotel property.
+        expr: PROPERTY_NAME
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Atliq Exotica
+          - Atliq Grands
+          - Atliq City
+  - name: DIM_ROOMS
+    base_table:
+      database: SNOWFLAKE_LEARNING_DB
+      schema: PUBLIC
+      table: DIM_ROOMS
+    dimensions:
+      - name: ROOM_CLASS
+        description: The type of room classification, indicating the level of luxury and amenities provided, with options including Premium, Standard, and Elite.
+        expr: ROOM_CLASS
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Premium
+          - Standard
+          - Elite
+      - name: ROOM_ID
+        description: Unique identifier for a room in the facility.
+        expr: ROOM_ID
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - RT1
+          - RT3
+          - RT2
+  - name: FACT_AGGREGATED_BOOKINGS
+    base_table:
+      database: SNOWFLAKE_LEARNING_DB
+      schema: PUBLIC
+      table: FACT_AGGREGATED_BOOKINGS
+    dimensions:
+      - name: ROOM_CATEGORY
+        description: The type of room category booked by the customer, such as single, double, suite, etc.
+        expr: ROOM_CATEGORY
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - RT1
+          - RT3
+          - RT2
+    time_dimensions:
+      - name: CHECK_IN_DATE
+        description: Date on which the guest checked into the hotel.
+        expr: CHECK_IN_DATE
+        data_type: DATE
+        sample_values:
+          - '2022-05-01'
+          - '2022-05-02'
+          - '2022-05-03'
+    facts:
+      - name: CAPACITY
+        description: The maximum number of people that can be accommodated in a booking.
+        expr: CAPACITY
+        data_type: NUMBER(38,0)
+        sample_values:
+          - '30'
+          - '40'
+          - '19'
+      - name: PROPERTY_ID
+        description: Unique identifier for a property in the booking system, used to track and aggregate booking data for each individual property.
+        expr: PROPERTY_ID
+        data_type: NUMBER(38,0)
+        sample_values:
+          - '19563'
+          - '16559'
+          - '17558'
+      - name: SUCCESSFUL_BOOKINGS
+        description: The total number of bookings that were successfully completed.
+        expr: SUCCESSFUL_BOOKINGS
+        data_type: NUMBER(38,0)
+        sample_values:
+          - '23'
+          - '25'
+          - '33'
+  - name: FACT_BOOKINGS
+    base_table:
+      database: SNOWFLAKE_LEARNING_DB
+      schema: PUBLIC
+      table: FACT_BOOKINGS
+    dimensions:
+      - name: BOOKING_ID
+        description: Unique identifier for each booking made by a customer.
+        expr: BOOKING_ID
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - May012216559RT234
+          - May012216559RT48
+          - May012216560RT116
+      - name: BOOKING_PLATFORM
+        description: The channel through which a booking was made, such as directly through the company's website, an online travel agency, or a third-party platform like Logtrip.
+        expr: BOOKING_PLATFORM
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - direct online
+          - others
+          - logtrip
+      - name: BOOKING_STATUS
+        description: The current status of a booking, indicating whether it has been successfully checked out, was cancelled by the customer, or the customer failed to show up.
+        expr: BOOKING_STATUS
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Checked Out
+          - Cancelled
+          - No Show
+      - name: ROOM_CATEGORY
+        description: The type of room category booked by the customer, such as single, double, suite, etc., represented by codes RT1, RT2, and RT3.
+        expr: ROOM_CATEGORY
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - RT1
+          - RT3
+          - RT2
+    time_dimensions:
+      - name: BOOKING_DATES
+        description: Date on which a booking was made.
+        expr: BOOKING_DATES
+        data_type: DATE
+        sample_values:
+          - '2022-04-27'
+          - '2022-04-30'
+          - '2022-04-28'
+      - name: CHECK_OUT_DATE
+        description: Date when the guest checked out of the accommodation.
+        expr: CHECK_OUT_DATE
+        data_type: DATE
+        sample_values:
+          - '2022-05-02'
+          - '2022-05-04'
+          - '2022-05-03'
+      - name: CHECKIN_DATE
+        description: Date on which the guest checked into the accommodation.
+        expr: CHECKIN_DATE
+        data_type: DATE
+        sample_values:
+          - '2022-05-01'
+          - '2022-05-02'
+          - '2022-05-03'
+    facts:
+      - name: NO_GUESTS
+        description: The number of guests associated with a booking.
+        expr: NO_GUESTS
+        data_type: NUMBER(38,0)
+        sample_values:
+          - '4'
+          - '2'
+          - '3'
+      - name: PROPERTY_ID
+        description: Unique identifier for a property in the booking system, used to link bookings to specific properties.
+        expr: PROPERTY_ID
+        data_type: NUMBER(38,0)
+        sample_values:
+          - '16558'
+          - '16559'
+          - '16560'
+      - name: RATINGS_GIVEN
+        description: The total number of ratings given by a customer.
+        expr: RATINGS_GIVEN
+        data_type: NUMBER(38,0)
+        sample_values:
+          - '1'
+          - '5'
+      - name: REVENUE_GENERATED
+        description: The total amount of revenue generated from bookings.
+        expr: REVENUE_GENERATED
+        data_type: NUMBER(38,0)
+        sample_values:
+          - '10920'
+          - '10010'
+          - '20160'
+      - name: REVENUE_REALIZED
+        description: The total amount of revenue generated from a booking, representing the actual amount earned by the company.
+        expr: REVENUE_REALIZED
+        data_type: NUMBER(38,0)
+        sample_values:
+          - '10920'
+          - '6120'
+          - '10010'
