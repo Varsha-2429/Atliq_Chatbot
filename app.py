@@ -569,10 +569,10 @@ else:
 
 
   st.markdown("""
-    <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px;">
-        <h2 style="margin-bottom: -30px; font-size: 36px;">AtliQ Hotels Performance</h2>
-        <img src="https://i.postimg.cc/Hs3j8x5Q/logo.png" style="height: 120px; width: 120px; margin-left: 20px;" />
-    </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px;">
+          <h2 style="margin-bottom: -30px; font-size: 36px;">AtliQ Hotels Performance</h2>
+          <img src="https://i.postimg.cc/Hs3j8x5Q/logo.png" style="height: 120px; width: 120px; margin-left: 20px;" />
+      </div>
   """, unsafe_allow_html=True)
  
     #st.title("Atliq Grand Hotels")
