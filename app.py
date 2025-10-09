@@ -576,8 +576,8 @@ else:
 """, unsafe_allow_html=True)
  
     #st.title("Atliq Grand Hotels")
-    #semantic_model_filename = SEMANTIC_MODEL.split("/")[-1]
-    #st.markdown(f"Semantic Model: `{semantic_model_filename}`")
+    semantic_model_filename = SEMANTIC_MODEL.split("/")[-1]
+    st.markdown(f"Semantic Model: `{semantic_model_filename}`")
  
     # Display welcome message only once, outside of chat history loop
     if not st.session_state.welcome_displayed:
