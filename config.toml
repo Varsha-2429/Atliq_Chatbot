@@ -1,0 +1,2 @@
+[global]
+python Version = "3.12"
