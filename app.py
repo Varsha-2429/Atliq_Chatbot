@@ -417,7 +417,6 @@ else:
     def snowflake_api_call(query: str, is_structured: bool = True):
         payload = {
             "model": st.session_state.model_name,
-            "messages": [{"role": "user", "content": [{"type": "text", "text": query}]}],
             "tools": [{"tool_spec": {"type": "cortex_analyst_text_to_sql", "name": "analyst1"}}],
             "tool_resources": {"analyst1": {"semantic_model_file": SEMANTIC_MODEL}}
         }
@@ -576,7 +575,7 @@ else:
  
     # Display welcome message only once, outside of chat history loop
     if not st.session_state.welcome_displayed:
-        welcome_message = "Hi, I am your Atliq Grand Hotel Assistant. I can help you explore data, insights and analytics on Atliq Hotels Performance."
+        welcome_message = "Hi, I am your Atliq Assistant. I can help you explore data, insights and analytics on Atliq Grand Hotels."
         with st.chat_message("assistant"):
             st.markdown(welcome_message, unsafe_allow_html=True)
         # Add to chat_history only if not already present
@@ -729,16 +728,15 @@ else:
                     failed_response = True
                     assistant_response["content"] = response_content
  
-               elif is_structured:
-                   response = snowflake_api_call(query, is_structured=True)
-                   sql = process_sse_response(response, is_structured=True)
+            elif is_structured:
+                response = snowflake_api_call(query, is_structured=True)
+                sql = process_sse_response(response, is_structured=True)
                 if sql:
                     results = run_snowflake_query(sql)
                     if results is not None and not results.empty:
                         results_text = results.to_string(index=False)
                         prompt = f"Provide a concise natural language answer to the query '{query}' using the following data, avoiding phrases like 'Based on the query results':\n\n{results_text}"
                         summary = complete(st.session_state.model_name, prompt)
-
                         if not summary:
                             summary = "⚠️ Unable to generate a natural language summary."
                         response_content = summary
