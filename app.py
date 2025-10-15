@@ -730,8 +730,8 @@ else:
                     assistant_response["content"] = response_content
  
                elif is_structured:
-                response = snowflake_api_call(query, is_structured=True)
-                sql = process_sse_response(response, is_structured=True)
+                   response = snowflake_api_call(query, is_structured=True)
+                   sql = process_sse_response(response, is_structured=True)
                 if sql:
                     results = run_snowflake_query(sql)
                     if results is not None and not results.empty:
