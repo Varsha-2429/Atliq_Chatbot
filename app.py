@@ -62,7 +62,7 @@ if "current_sql" not in st.session_state:
 if "current_summary" not in st.session_state:
     st.session_state.current_summary = None
 if "model_name" not in st.session_state:
-    st.session_state.model_name = "mistral-large"
+    st.session_state.model_name = "llama-2-13b-chat"
 if "num_chat_messages" not in st.session_state:
     st.session_state.num_chat_messages = 10
 if "use_chat_history" not in st.session_state:
