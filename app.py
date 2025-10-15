@@ -729,7 +729,7 @@ else:
                     failed_response = True
                     assistant_response["content"] = response_content
  
-                elif is_structured:
+               elif is_structured:
                 response = snowflake_api_call(query, is_structured=True)
                 sql = process_sse_response(response, is_structured=True)
                 if sql:
