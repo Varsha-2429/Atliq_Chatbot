@@ -417,6 +417,7 @@ else:
     def snowflake_api_call(query: str, is_structured: bool = True):
         payload = {
             "model": st.session_state.model_name,
+            "messages":[{"role": "user", "content": [{"type": "text", "text": query}]}],
             "tools": [{"tool_spec": {"type": "cortex_analyst_text_to_sql", "name": "analyst1"}}],
             "tool_resources": {"analyst1": {"semantic_model_file": SEMANTIC_MODEL}}
         }
