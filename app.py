@@ -11,12 +11,12 @@ import plotly.express as px
 import time
  
 # Snowflake/Cortex Configuration
-HOST = "HLUBAAF-CIB49292.snowflakecomputing.com"
-DATABASE = "GRANTS"
-SCHEMA = "GS"
-API_ENDPOINT = "/api/v2/cortex/agent:run"
+HOST ="VZIXLPJ-GUB99003.snowflakecomputing.com"
+DATABASE ="SNOWFLAKE_LEARNING_DB"
+SCHEMA ="ATLIQ"
+API_ENDPOINT ="/api/v2/cortex/agent:run"
 API_TIMEOUT = 50000  # in milliseconds
-SEMANTIC_MODEL = '@"GRANTS"."GS"."GSTAGE"/GRANTS_CHATBOT.yaml'
+SEMANTIC_MODEL ='@"SNOWFLAKE_LEARNING_DB"."ATLIQ"."ATLIQ_STAGE"/ATLIQ_YAML_1.yaml'
  
 # Model options
 MODELS = [
