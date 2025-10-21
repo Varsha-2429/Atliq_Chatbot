@@ -574,7 +574,7 @@ else:
  
     # Display welcome message only once, outside of chat history loop
     if not st.session_state.welcome_displayed:
-        welcome_message = "Hi, I am your Atliq Grand Hotel Assistant. I can help you explore data, insights and analytics on Atliq Hotel Performance."
+        welcome_message = "Hi, I am your Atliq Grand Hotel Assistant. I can help you explore data, insights and analytics on Atliq Grand Hotel Performance."
         with st.chat_message("assistant"):
             st.markdown(welcome_message, unsafe_allow_html=True)
         # Add to chat_history only if not already present
@@ -593,7 +593,7 @@ else:
     # Display chat history without chat bubbles for assistant, skipping the welcome message
     for idx, message in enumerate(st.session_state.chat_history):
         # Skip the welcome message since it's already displayed above
-        if idx == 0 and message["content"] == "Hi, I am your Atliq Grand Hotel Assistant. I can help you explore data, insights and analytics on Atliq Hotel Performance.":
+        if idx == 0 and message["content"] == "Hi, I am your Atliq Grand Hotel Assistant. I can help you explore data, insights and analytics on Atliq Grand Hotel Performance.":
             continue
         if message["role"] == "user":
             with st.chat_message("user"):
