@@ -584,11 +584,10 @@ else:
  
     st.sidebar.subheader("Sample Questions")
     sample_questions = [
-        "What is the Total Burdened Cost?",
-        "Top 10 Projects by Total Burdened Cost?",
-        "What is the count of Total No of Awards and Projects?",
-        "What is the Original Budget, Current Budget and Total Burdened Cost?",
-        "What are the top funding sources?"
+        "What is the revenue generated in each month in the year 2022?",
+        "Top 3 Cities which generated highest revenue?",
+        "What is the revenue per available room in the year 2022?"
+        
     ]
  
     # Display chat history without chat bubbles for assistant, skipping the welcome message
