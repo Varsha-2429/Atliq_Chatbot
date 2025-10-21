@@ -568,13 +568,13 @@ else:
                 "- [Contact Support](https://support.snowflake.com/s/)"
             )
  
-    st.title("Cortex AI-GRANTS Assistant by DiLytics")
+    st.title("Atliq Grand Hotel AI Assistant by DiLytics")
     semantic_model_filename = SEMANTIC_MODEL.split("/")[-1]
     st.markdown(f"Semantic Model: `{semantic_model_filename}`")
  
     # Display welcome message only once, outside of chat history loop
     if not st.session_state.welcome_displayed:
-        welcome_message = "Hi, I am your GRANTS Assistant. I can help you explore data, insights and analytics on GRANTS."
+        welcome_message = "Hi, I am your Atliq Grand Hotel Assistant. I can help you explore data, insights and analytics on Atliq Hotel Performance."
         with st.chat_message("assistant"):
             st.markdown(welcome_message, unsafe_allow_html=True)
         # Add to chat_history only if not already present
@@ -594,7 +594,7 @@ else:
     # Display chat history without chat bubbles for assistant, skipping the welcome message
     for idx, message in enumerate(st.session_state.chat_history):
         # Skip the welcome message since it's already displayed above
-        if idx == 0 and message["content"] == "Hi, I am your GRANTS Assistant. I can help you explore data, insights and analytics on GRANTS.":
+        if idx == 0 and message["content"] == "Hi, I am your Atliq Grand Hotel Assistant. I can help you explore data, insights and analytics on Atliq Hotel Performance.":
             continue
         if message["role"] == "user":
             with st.chat_message("user"):
