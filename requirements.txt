@@ -15,4 +15,8 @@ plotly>=5.15.0
 requests==2.32.3
 retrying
 cryptography==42.0.8
+<<<<<<< HEAD
 pyOpenSSL==24.1.0
+=======
+pyOpenSSL==24.1.0
+>>>>>>> 7bb149b1 (Fixed snowflake_api_call payload to use input instead of messages)
